@@ -51,6 +51,17 @@ undo_task <- function(name) {
     return("FAIL")
 }
 
+invert_task <- function(name) {
+    for (i in seq_along(todo)) {
+        if (todo[[i]]$name == name) {
+            todo[[i]]$done <<- !todo[[i]]$done
+            writeback()
+            return("OK")
+        }
+        return("FAIL")
+    }
+}
+
 get_tasks <- function() {
     transposed_data <- matrix(
         unlist(todo),

@@ -15,7 +15,7 @@ ui <- fluidPage(
             ),
             actionButton(
                 inputId = "done",
-                label = "Mark Task Complete"
+                label = "Complete/Incomplete"
             ),
             actionButton(
                 inputId = "remove",
@@ -44,7 +44,7 @@ server <- function(input, output, session) {
     })
 
     observeEvent(input$done, {
-        done_task(input$text)
+        invert_task(input$text)
         update_table(output, session)
     })
 
